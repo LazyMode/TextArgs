@@ -5,21 +5,22 @@ using System.Linq;
 using System.Text;
 
 using EssIL;
+using static TextualArgumentOptions;
 
-static partial class CommandLineUtility
+static partial class TextualArgumentUtility
 {
     const char RegularQuoteChar = '"';
     const char ESStyleAdditionalQuoteChar = '\'';
 
     public static string EvaluateCommandLineArgument(string argument,
-        CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
+        TextualArgumentOptions options = Default)
     {
         if (!options.IsValid())
             throw new ArgumentOutOfRangeException(nameof(options));
 
         char? last = null;
         char? quote = null;
-        var useESStyle = options.Has(CommandLineArgumentOptions.EnableEcmaScriptStyle);
+        var useESStyle = options.Has(EnableEcmaScriptStyle);
         var fullyQuoted = (argument[0] == RegularQuoteChar || useESStyle && argument[0] == ESStyleAdditionalQuoteChar);
         var sb = new StringBuilder();
 
@@ -53,13 +54,13 @@ static partial class CommandLineUtility
                         var shouldEscape = false;
                         switch (options)
                         {
-                            case CommandLineArgumentOptions.MixCStyleEscape:
+                            case MixCStyleEscape:
                                 shouldEscape = true;
                                 break;
-                            case CommandLineArgumentOptions.MixCStyleEscapeOnlyQuoted:
+                            case MixCStyleEscapeOnlyQuoted:
                                 shouldEscape = quote.HasValue;
                                 break;
-                            case CommandLineArgumentOptions.MixCStyleEscapeOnlyFullyQuoted:
+                            case MixCStyleEscapeOnlyFullyQuoted:
                                 shouldEscape = fullyQuoted && quote.HasValue;
                                 break;
                         }
@@ -82,11 +83,11 @@ static partial class CommandLineUtility
     }
 
     public static string[] GetCommandLineArguments(
-        CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
+        TextualArgumentOptions options = Default)
         => Environment.CommandLine.ReadCommandLineArguments(options);
 
     public static string ReadCommandLineArgument(this TextReader reader,
-        CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
+        TextualArgumentOptions options = Default)
     {
         if (!options.IsValid())
             throw new ArgumentOutOfRangeException(nameof(options));
@@ -104,7 +105,7 @@ static partial class CommandLineUtility
         }
 
         char? quote = null;
-        var useESStyle = options.Has(CommandLineArgumentOptions.EnableEcmaScriptStyle);
+        var useESStyle = options.Has(EnableEcmaScriptStyle);
         var fullyQuoted = (c == RegularQuoteChar || useESStyle && c == ESStyleAdditionalQuoteChar);
         var sb = new StringBuilder();
 
@@ -128,13 +129,13 @@ static partial class CommandLineUtility
                     var shouldEscape = false;
                     switch (options)
                     {
-                        case CommandLineArgumentOptions.MixCStyleEscape:
+                        case MixCStyleEscape:
                             shouldEscape = true;
                             break;
-                        case CommandLineArgumentOptions.MixCStyleEscapeOnlyQuoted:
+                        case MixCStyleEscapeOnlyQuoted:
                             shouldEscape = quote.HasValue;
                             break;
-                        case CommandLineArgumentOptions.MixCStyleEscapeOnlyFullyQuoted:
+                        case MixCStyleEscapeOnlyFullyQuoted:
                             shouldEscape = fullyQuoted && quote.HasValue;
                             break;
                     }
@@ -164,7 +165,7 @@ static partial class CommandLineUtility
         return sb.ToString();
     }
     public static IEnumerable<string> ReadCommandLineArguments(this TextReader reader,
-        CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
+        TextualArgumentOptions options = Default)
     {
         string argument;
         for (;;)
@@ -175,7 +176,7 @@ static partial class CommandLineUtility
         }
     }
     public static string[] ReadCommandLineArguments(this string text,
-        CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
+        TextualArgumentOptions options = Default)
     {
         using (var reader = new StringReader(text))
             return ReadCommandLineArguments(reader, options).ToArray();

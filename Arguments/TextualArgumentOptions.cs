@@ -1,6 +1,6 @@
 ﻿using EssIL;
 
-enum CommandLineArgumentOptions
+enum TextualArgumentOptions
 {
     Default = 0,
     MixCStyleEscape = 1,
@@ -13,8 +13,8 @@ enum CommandLineArgumentOptions
     MixEcmaScriptStyleEscapeOnlyFullyQuoted = MixCStyleEscapeOnlyFullyQuoted | EnableEcmaScriptStyle,
 }
 
-static class CommandLineArgumentOptionsEx
+static class TextualArgumentOptionsEx
 {
-    public static bool IsValid(this CommandLineArgumentOptions value)
-        => CommandLineArgumentOptions.MixEcmaScriptStyleEscapeOnlyFullyQuoted.Has(value);
+    public static bool IsValid(this TextualArgumentOptions value)
+        => TextualArgumentOptions.MixEcmaScriptStyleEscapeOnlyFullyQuoted.Has(value);
 }
