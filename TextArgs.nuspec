@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>TextArgs</id>
+        <version>0.0</version>
+        <authors>Licshee</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>-</description>
+        <dependencies>
+            <dependency id="EssIL" version="0.4" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="TextArgs\TextualArgumentOptions.cs" target="content\TextualArgumentOptions.cs" />
+        <file src="TextArgs\TextualArgumentUtility.cs" target="content\TextualArgumentUtility.cs" />
+    </files>
+</package>
