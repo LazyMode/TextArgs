@@ -8,40 +8,46 @@ using EssIL;
 
 static partial class CommandLineUtility
 {
-    public static string EvaluateCommandLineArgument(string argument, 
+    const char RegularQuoteChar = '"';
+    const char ESStyleAdditionalQuoteChar = '\'';
+
+    public static string EvaluateCommandLineArgument(string argument,
         CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
     {
-        if (!CommandLineArgumentOptions.MixCStyleEscapeOnlyFullyQuoted.Has(options))
+        if (!options.IsValid())
             throw new ArgumentOutOfRangeException(nameof(options));
 
         char? last = null;
-        var quoted = false;
-        var fullyQuoted = (argument[0] == '"');
+        char? quote = null;
+        var useESStyle = options.Has(CommandLineArgumentOptions.EnableEcmaScriptStyle);
+        var fullyQuoted = (argument[0] == RegularQuoteChar || useESStyle && argument[0] == ESStyleAdditionalQuoteChar);
         var sb = new StringBuilder();
 
         foreach (var c in argument)
         {
             if (last == '\\')
-            {
                 last = null;
-            }
             else
             {
                 switch (c)
                 {
-                    case '"':
-                        quoted = !quoted;
+                    case ESStyleAdditionalQuoteChar:
+                        if (useESStyle)
+                            goto case RegularQuoteChar;
+                        goto default;
+                    case RegularQuoteChar:
+                        if (c == quote)
+                            quote = null;
+                        else
+                            quote = c;
 
-                        if (last == '"')
-                        {
+                        if (c == last)
                             last = null;
-                        }
                         else
                         {
-                            last = '"';
+                            last = c;
                             continue;
                         }
-
                         break;
                     case '\\':
                         var shouldEscape = false;
@@ -51,10 +57,10 @@ static partial class CommandLineUtility
                                 shouldEscape = true;
                                 break;
                             case CommandLineArgumentOptions.MixCStyleEscapeOnlyQuoted:
-                                shouldEscape = quoted;
+                                shouldEscape = quote.HasValue;
                                 break;
                             case CommandLineArgumentOptions.MixCStyleEscapeOnlyFullyQuoted:
-                                shouldEscape = fullyQuoted && quoted;
+                                shouldEscape = fullyQuoted && quote.HasValue;
                                 break;
                         }
 
@@ -82,7 +88,7 @@ static partial class CommandLineUtility
     public static string ReadCommandLineArgument(this TextReader reader,
         CommandLineArgumentOptions options = CommandLineArgumentOptions.Default)
     {
-        if (!CommandLineArgumentOptions.MixCStyleEscapeOnlyFullyQuoted.Has(options))
+        if (!options.IsValid())
             throw new ArgumentOutOfRangeException(nameof(options));
 
         int cp;
@@ -97,8 +103,9 @@ static partial class CommandLineUtility
                 break;
         }
 
-        var fullyQuoted = (c == '"');
-        var quoted = false;
+        char? quote = null;
+        var useESStyle = options.Has(CommandLineArgumentOptions.EnableEcmaScriptStyle);
+        var fullyQuoted = (c == RegularQuoteChar || useESStyle && c == ESStyleAdditionalQuoteChar);
         var sb = new StringBuilder();
 
         while (cp >= 0)
@@ -107,8 +114,15 @@ static partial class CommandLineUtility
 
             switch (c)
             {
-                case '"':
-                    quoted = !quoted;
+                case ESStyleAdditionalQuoteChar:
+                    if (useESStyle)
+                        goto case RegularQuoteChar;
+                    goto default;
+                case RegularQuoteChar:
+                    if (c == quote)
+                        quote = null;
+                    else
+                        quote = c;
                     break;
                 case '\\':
                     var shouldEscape = false;
@@ -118,10 +132,10 @@ static partial class CommandLineUtility
                             shouldEscape = true;
                             break;
                         case CommandLineArgumentOptions.MixCStyleEscapeOnlyQuoted:
-                            shouldEscape = quoted;
+                            shouldEscape = quote.HasValue;
                             break;
                         case CommandLineArgumentOptions.MixCStyleEscapeOnlyFullyQuoted:
-                            shouldEscape = fullyQuoted && quoted;
+                            shouldEscape = fullyQuoted && quote.HasValue;
                             break;
                     }
 
@@ -136,7 +150,7 @@ static partial class CommandLineUtility
                     }
                     break;
                 default:
-                    if (!quoted && char.IsWhiteSpace(c))
+                    if (!quote.HasValue && char.IsWhiteSpace(c))
                     {
                         cp = -1;
                         continue;
