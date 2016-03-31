@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
-    <id>TextArgs.CS</id>
+    <id>TextArgs</id>
     <version>0.0-aardvark</version>
     <authors>Licshee</authors>
     <projectUrl>https://github.com/OmniKits/TextArgs</projectUrl>
@@ -12,7 +12,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="TextArgs\TextualArgumentOptions.cs" target="content\TextualArgumentOptions.cs" />
-    <file src="TextArgs\TextualArgumentUtility.cs" target="content\TextualArgumentUtility.cs" />
+    <file src="Release\Net40\TextArgs.dll" target="lib\net40-client\TextArgs.dll" />
+    <file src="Release\Portable\TextArgs.dll" target="lib\portable-net4+sl5+uap+win8+wp8+wpa+dnxcore\TextArgs.dll" />
   </files>
 </package>
