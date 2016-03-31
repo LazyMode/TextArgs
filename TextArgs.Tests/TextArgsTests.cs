@@ -7,20 +7,6 @@ using static TextualArgumentOptions;
 
 public class TextArgsTests
 {
-    //[Fact]
-    //public void TestMethod1()
-    //{
-    //    Assert.Equal("sdf", TextualArgumentUtility.EvaluateCommandLineArgument("sdf"));
-
-    //    for(var c = '\0'; c < '\u0100'; c++)
-    //    {
-    //        var cate = char.GetUnicodeCategory(c);
-    //        Debug.WriteLine($"{(int)c}\t{c} => {(int)cate}:{cate}");
-    //    }
-
-
-    //}
-
     [Theory]
 
     //[InlineData(Default, "foo bar", "foo bar")]

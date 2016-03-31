@@ -88,9 +88,11 @@ static class TextualArgumentUtility
         return sb.ToString();
     }
 
+#if NET
     public static string[] GetCommandLineArguments(
         TextualArgumentOptions options = Default)
         => Environment.CommandLine.ReadCommandLineArguments(options);
+#endif
 
     public static string ReadCommandLineArgument(this TextReader reader,
         TextualArgumentOptions options = Default)

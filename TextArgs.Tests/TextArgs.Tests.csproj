@@ -67,13 +67,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TextArgs.NET40\TextArgs.NET40.csproj">
-      <Project>{a1d2dc1a-a63a-4072-bae0-8a5baffc2adb}</Project>
-      <Name>TextArgs.NET40</Name>
-    </ProjectReference>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <ProjectReference Include="..\TextArgs.Portable\TextArgs.Portable.csproj">
+      <Project>{a7c81659-5080-442f-b64c-1a620f34791b}</Project>
+      <Name>TextArgs.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
