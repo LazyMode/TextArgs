@@ -6,14 +6,14 @@ public
 enum TextualArgumentOptions
 {
     Default = 0,
-    MixCLikeEscape = 1,
-    MixCLikeEscapeOnlyQuoted = 2,
-    MixCLikeEscapeOnlyFullyQuoted = 3,
+    UseCLikeEscape = 1,
+    UseCLikeEscapeQuote = 2,
+    UseCLikeEscapeStrict = 3,
 
     EnableEcmaScriptLike = 4,
-    MixEcmaScriptLikeEscape = MixCLikeEscape | EnableEcmaScriptLike,
-    MixEcmaScriptLikeEscapeOnlyQuoted = MixCLikeEscapeOnlyQuoted | EnableEcmaScriptLike,
-    MixEcmaScriptLikeEscapeOnlyFullyQuoted = MixCLikeEscapeOnlyFullyQuoted | EnableEcmaScriptLike,
+    UseEcmaScriptLikeEscape = UseCLikeEscape | EnableEcmaScriptLike,
+    UseEcmaScriptLikeEscapeQuote = UseCLikeEscapeQuote | EnableEcmaScriptLike,
+    UseEcmaScriptLikeEscapeStrict = UseCLikeEscapeStrict | EnableEcmaScriptLike,
 }
 
 #if PUBLIC
@@ -22,5 +22,5 @@ public
 static class TextualArgumentOptionsEx
 {
     public static bool IsValid(this TextualArgumentOptions value)
-        => TextualArgumentOptions.MixEcmaScriptLikeEscapeOnlyFullyQuoted.Has(value);
+        => TextualArgumentOptions.UseEcmaScriptLikeEscapeStrict.Has(value);
 }

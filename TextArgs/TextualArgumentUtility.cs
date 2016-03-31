@@ -57,16 +57,16 @@ static class TextualArgumentUtility
                         var shouldEscape = false;
                         switch (options)
                         {
-                            case MixCLikeEscape:
-                            case MixEcmaScriptLikeEscape:
+                            case UseCLikeEscape:
+                            case UseEcmaScriptLikeEscape:
                                 shouldEscape = true;
                                 break;
-                            case MixCLikeEscapeOnlyQuoted:
-                            case MixEcmaScriptLikeEscapeOnlyQuoted:
+                            case UseCLikeEscapeQuote:
+                            case UseEcmaScriptLikeEscapeQuote:
                                 shouldEscape = quote.HasValue;
                                 break;
-                            case MixCLikeEscapeOnlyFullyQuoted:
-                            case MixEcmaScriptLikeEscapeOnlyFullyQuoted:
+                            case UseCLikeEscapeStrict:
+                            case UseEcmaScriptLikeEscapeStrict:
                                 shouldEscape = fullyQuoted && quote.HasValue;
                                 break;
                         }
@@ -137,16 +137,16 @@ static class TextualArgumentUtility
                     var shouldEscape = false;
                     switch (options)
                     {
-                        case MixCLikeEscape:
-                        case MixEcmaScriptLikeEscape:
+                        case UseCLikeEscape:
+                        case UseEcmaScriptLikeEscape:
                             shouldEscape = true;
                             break;
-                        case MixCLikeEscapeOnlyQuoted:
-                        case MixEcmaScriptLikeEscapeOnlyQuoted:
+                        case UseCLikeEscapeQuote:
+                        case UseEcmaScriptLikeEscapeQuote:
                             shouldEscape = quote.HasValue;
                             break;
-                        case MixCLikeEscapeOnlyFullyQuoted:
-                        case MixEcmaScriptLikeEscapeOnlyFullyQuoted:
+                        case UseCLikeEscapeStrict:
+                        case UseEcmaScriptLikeEscapeStrict:
                             shouldEscape = fullyQuoted && quote.HasValue;
                             break;
                     }
