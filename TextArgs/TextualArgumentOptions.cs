@@ -1,6 +1,4 @@
-﻿using ILTricks;
-
-#if EXPOSE_EVERYTHING || EXPOSE_TEXTARGS
+﻿#if EXPOSE_EVERYTHING || EXPOSE_TEXTARGS
 public
 #endif
 enum TextualArgumentOptions

@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-using ILTricks;
 using static TextualArgumentOptions;
 
 #if EXPOSE_EVERYTHING || EXPOSE_TEXTARGS
