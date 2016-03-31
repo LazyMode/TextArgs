@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>TextArgs.CS</id>
-    <version>0.1-apex</version>
+    <version>0.1.0.0</version>
     <authors>OmniKits</authors>
     <projectUrl>https://github.com/OmniKits/TextArgs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <developmentDependency>true</developmentDependency>
     <description>-</description>
     <dependencies>
-      <dependency id="ILTricks" version="0.4-apex" />
+      <dependency id="ILTricks" version="0.4" />
     </dependencies>
   </metadata>
   <files>

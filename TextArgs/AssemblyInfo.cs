@@ -1,3 +1,4 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyInformationalVersion("0.1-apex")]
+[assembly: AssemblyVersion("0.1")]
+//[assembly: AssemblyInformationalVersion("0.1")]

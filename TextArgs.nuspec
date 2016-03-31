@@ -2,16 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>TextArgs</id>
-    <version>0.1-apex</version>
+    <version>0.1.0.0</version>
     <authors>OmniKits</authors>
     <projectUrl>https://github.com/OmniKits/TextArgs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>-</description>
     <dependencies>
-      <dependency id="ILTricks" version="0.4-apex" />
+      <dependency id="ILTricks" version="0.4" />
     </dependencies>
   </metadata>
   <files>
+    <file src="Release\Net20\TextArgs.dll" target="lib\net20\TextArgs.dll" />
+    <file src="Release\Net35\TextArgs.dll" target="lib\net35\TextArgs.dll" />
     <file src="Release\Net40\TextArgs.dll" target="lib\net40-client\TextArgs.dll" />
     <file src="Release\Portable\TextArgs.dll" target="lib\portable-net4+sl5+uap+win8+wp8+wpa+dnxcore\TextArgs.dll" />
   </files>

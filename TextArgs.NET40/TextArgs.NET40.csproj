@@ -32,16 +32,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ILTricks, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ILTricks.0.4-apex\lib\net40-client\ILTricks.dll</HintPath>
+      <HintPath>..\packages\ILTricks.0.4\lib\net40-client\ILTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
