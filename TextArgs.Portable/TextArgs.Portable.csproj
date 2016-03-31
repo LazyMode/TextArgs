@@ -38,8 +38,8 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ILTricks, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ILTricks.0.4\lib\portable-net4+sl5+uap+win8+wp8+wpa+dnxcore\ILTricks.dll</HintPath>
+    <Reference Include="ILTricks, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ILTricks.0.4.1\lib\portable-net4+sl5+uap+win8+wp8+wpa+dnxcore\ILTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

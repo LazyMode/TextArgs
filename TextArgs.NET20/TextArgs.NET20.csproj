@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILTricks, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ILTricks.0.4\lib\net20\ILTricks.dll</HintPath>
+    <Reference Include="ILTricks, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ILTricks.0.4.1\lib\net20\ILTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
