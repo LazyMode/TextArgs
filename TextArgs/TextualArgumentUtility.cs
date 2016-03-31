@@ -7,10 +7,13 @@ using System.Text;
 using EssIL;
 using static TextualArgumentOptions;
 
-static partial class TextualArgumentUtility
+#if PUBLIC
+public
+#endif
+static class TextualArgumentUtility
 {
     const char RegularQuoteChar = '"';
-    const char ESStyleAdditionalQuoteChar = '\'';
+    const char ESLikeAdditionalQuoteChar = '\'';
 
     public static string EvaluateCommandLineArgument(string argument,
         TextualArgumentOptions options = Default)
@@ -20,8 +23,8 @@ static partial class TextualArgumentUtility
 
         char? last = null;
         char? quote = null;
-        var useESStyle = options.Has(EnableEcmaScriptStyle);
-        var fullyQuoted = (argument[0] == RegularQuoteChar || useESStyle && argument[0] == ESStyleAdditionalQuoteChar);
+        var useESLike = options.Has(EnableEcmaScriptLike);
+        var fullyQuoted = (argument[0] == RegularQuoteChar || useESLike && argument[0] == ESLikeAdditionalQuoteChar);
         var sb = new StringBuilder();
 
         foreach (var c in argument)
@@ -32,8 +35,8 @@ static partial class TextualArgumentUtility
             {
                 switch (c)
                 {
-                    case ESStyleAdditionalQuoteChar:
-                        if (useESStyle)
+                    case ESLikeAdditionalQuoteChar:
+                        if (useESLike)
                             goto case RegularQuoteChar;
                         goto default;
                     case RegularQuoteChar:
@@ -54,13 +57,16 @@ static partial class TextualArgumentUtility
                         var shouldEscape = false;
                         switch (options)
                         {
-                            case MixCStyleEscape:
+                            case MixCLikeEscape:
+                            case MixEcmaScriptLikeEscape:
                                 shouldEscape = true;
                                 break;
-                            case MixCStyleEscapeOnlyQuoted:
+                            case MixCLikeEscapeOnlyQuoted:
+                            case MixEcmaScriptLikeEscapeOnlyQuoted:
                                 shouldEscape = quote.HasValue;
                                 break;
-                            case MixCStyleEscapeOnlyFullyQuoted:
+                            case MixCLikeEscapeOnlyFullyQuoted:
+                            case MixEcmaScriptLikeEscapeOnlyFullyQuoted:
                                 shouldEscape = fullyQuoted && quote.HasValue;
                                 break;
                         }
@@ -105,8 +111,8 @@ static partial class TextualArgumentUtility
         }
 
         char? quote = null;
-        var useESStyle = options.Has(EnableEcmaScriptStyle);
-        var fullyQuoted = (c == RegularQuoteChar || useESStyle && c == ESStyleAdditionalQuoteChar);
+        var useESLike = options.Has(EnableEcmaScriptLike);
+        var fullyQuoted = (c == RegularQuoteChar || useESLike && c == ESLikeAdditionalQuoteChar);
         var sb = new StringBuilder();
 
         while (cp >= 0)
@@ -115,8 +121,8 @@ static partial class TextualArgumentUtility
 
             switch (c)
             {
-                case ESStyleAdditionalQuoteChar:
-                    if (useESStyle)
+                case ESLikeAdditionalQuoteChar:
+                    if (useESLike)
                         goto case RegularQuoteChar;
                     goto default;
                 case RegularQuoteChar:
@@ -129,13 +135,16 @@ static partial class TextualArgumentUtility
                     var shouldEscape = false;
                     switch (options)
                     {
-                        case MixCStyleEscape:
+                        case MixCLikeEscape:
+                        case MixEcmaScriptLikeEscape:
                             shouldEscape = true;
                             break;
-                        case MixCStyleEscapeOnlyQuoted:
+                        case MixCLikeEscapeOnlyQuoted:
+                        case MixEcmaScriptLikeEscapeOnlyQuoted:
                             shouldEscape = quote.HasValue;
                             break;
-                        case MixCStyleEscapeOnlyFullyQuoted:
+                        case MixCLikeEscapeOnlyFullyQuoted:
+                        case MixEcmaScriptLikeEscapeOnlyFullyQuoted:
                             shouldEscape = fullyQuoted && quote.HasValue;
                             break;
                     }
