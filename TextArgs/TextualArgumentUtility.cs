@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-using EssIL;
+using ILTricks;
 using static TextualArgumentOptions;
 
-#if PUBLIC
+#if EXPOSE_EVERYTHING || EXPOSE_TEXTARGS
 public
 #endif
 static class TextualArgumentUtility
@@ -88,7 +88,7 @@ static class TextualArgumentUtility
         return sb.ToString();
     }
 
-#if NET
+#if NETFX
     public static string[] GetCommandLineArguments(
         TextualArgumentOptions options = Default)
         => Environment.CommandLine.ReadCommandLineArguments(options);

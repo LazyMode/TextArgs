@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PUBLIC</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;EXPOSE_EVERYTHING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\Release\Portable\</OutputPath>
-    <DefineConstants>TRACE;PUBLIC</DefineConstants>
+    <DefineConstants>TRACE;EXPOSE_EVERYTHING</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -38,8 +38,8 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EssIL, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EssIL.0.4\lib\EssIL.dll</HintPath>
+    <Reference Include="ILTricks, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ILTricks.0.4-abrocome\lib\portable-net4+sl5+uap+win8+wp8+wpa+dnxcore\ILTricks.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

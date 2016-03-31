@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>TextArgs.CS</id>
-    <version>0.0-aardvark</version>
-    <authors>Licshee</authors>
+    <version>0.1-abrocome</version>
+    <authors>OmniKits</authors>
     <projectUrl>https://github.com/OmniKits/TextArgs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>-</description>
     <dependencies>
-      <dependency id="EssIL" version="0.4" />
+      <dependency id="ILTricks" version="0.4-abrocome" />
     </dependencies>
   </metadata>
   <files>

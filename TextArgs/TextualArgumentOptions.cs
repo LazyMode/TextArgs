@@ -1,6 +1,6 @@
-﻿using EssIL;
+﻿using ILTricks;
 
-#if PUBLIC
+#if EXPOSE_EVERYTHING || EXPOSE_TEXTARGS
 public
 #endif
 enum TextualArgumentOptions
@@ -16,7 +16,7 @@ enum TextualArgumentOptions
     MixEcmaScriptLikeEscapeOnlyFullyQuoted = MixCLikeEscapeOnlyFullyQuoted | EnableEcmaScriptLike,
 }
 
-#if PUBLIC
+#if EXPOSE_EVERYTHING || EXPOSE_TEXTARGS
 public
 #endif
 static class TextualArgumentOptionsEx
